@@ -16,6 +16,8 @@ public class RocketBehavior : MonoBehaviour
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem finishParticle;
 
+    bool collisionStatus = false;
+
     enum State
     {
         Playing,
@@ -38,12 +40,25 @@ public class RocketBehavior : MonoBehaviour
         {
             RocketLaunch();
             RocketRotation();
+            DebugKeys();
+        }
+    }
+
+    void DebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionStatus = !collisionStatus;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Playing)
+        if (state != State.Playing || collisionStatus)
         {
             return;
         }
