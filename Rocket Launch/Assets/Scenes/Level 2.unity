@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingPosition: {x: 0, y: -20, z: 0}
-  movingSpeed: 0
+  movingSpeed: 0.25
   moveProgress: 0
 --- !u!1001 &1914157137
 PrefabInstance:
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingPosition: {x: 0, y: 10, z: 0}
-  movingSpeed: 0
+  movingSpeed: 0.25
   moveProgress: 0
 --- !u!1001 &5541282010820558468
 PrefabInstance:

@@ -1,4 +1,5 @@
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class RocketBehavior : MonoBehaviour
@@ -6,6 +7,9 @@ public class RocketBehavior : MonoBehaviour
     Rigidbody _rb;
     AudioSource _as;
 
+    [SerializeField] Text textFuel;
+    [SerializeField] int fuelTotal = 2000;
+    [SerializeField] int fuelApply = 5;
     [SerializeField] float rotationSpeed = 70f;
     [SerializeField] float flySpeed = 50f;
     [SerializeField] AudioClip flySound;
@@ -15,6 +19,7 @@ public class RocketBehavior : MonoBehaviour
     [SerializeField] ParticleSystem flyParticle;
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem finishParticle;
+
 
     bool collisionStatus = false;
 
@@ -36,7 +41,7 @@ public class RocketBehavior : MonoBehaviour
 
     void Update()
     {
-        if (state == State.Playing)
+        if (state == State.Playing || fuelTotal < 5)
         {
             RocketLaunch();
             RocketRotation();
@@ -70,13 +75,19 @@ public class RocketBehavior : MonoBehaviour
                 Finish();
                 break;
             case "Fuel":
+                GetFuel(500, collision.gameObject);
                 break;
             default:
                 Death();
                 break;
         }
     }
-
+    void GetFuel(int fuelAdd, GameObject fuelObj)
+    {
+        fuelObj.GetComponent<BoxCollider>().enabled = false;
+        fuelTotal += fuelAdd;
+        Destroy (fuelObj);
+    }
     void Death()
     {
         state = State.Dead;
@@ -102,14 +113,24 @@ public class RocketBehavior : MonoBehaviour
 
     void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextLevelIndex = currentLevelIndex + 1;
+
+        if (nextLevelIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextLevelIndex = 0;
+        }
+        SceneManager.LoadScene(nextLevelIndex);
     }
 
     void RocketLaunch()
     {
         float flySpeedDelta = flySpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space)) 
+
+        if (Input.GetKey(KeyCode.Space) && fuelTotal > 0) 
         {
+            fuelTotal -= Mathf.RoundToInt(fuelApply*Time.deltaTime);
+            textFuel.text = fuelTotal.ToString();
             _rb.AddRelativeForce(Vector3.up * flySpeedDelta);
             if (!_as.isPlaying)
                 _as.PlayOneShot(flySound);
