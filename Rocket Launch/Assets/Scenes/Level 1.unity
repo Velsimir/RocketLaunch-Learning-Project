@@ -725,10 +725,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 717978023}
     - target: {fileID: 1094754028, guid: 0437aea23e6294fa3b4ee4b65a7520a6, type: 3}
-      propertyPath: fuelApply
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1094754028, guid: 0437aea23e6294fa3b4ee4b65a7520a6, type: 3}
       propertyPath: fuelTotal
       value: 100
       objectReference: {fileID: 0}
@@ -1092,6 +1088,14 @@ PrefabInstance:
     - target: {fileID: 5541282010233083805, guid: 5723abc0746104d90ab0742b3229f422, type: 3}
       propertyPath: m_Name
       value: Fuel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541282010233083806, guid: 5723abc0746104d90ab0742b3229f422, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541282010233083807, guid: 5723abc0746104d90ab0742b3229f422, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5723abc0746104d90ab0742b3229f422, type: 3}

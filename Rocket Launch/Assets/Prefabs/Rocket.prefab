@@ -554,6 +554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6442015b1567144bfb5d8dcbc26b57b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textFuel: {fileID: 0}
+  fuelTotal: 100
+  fuelApply: 30
   rotationSpeed: 70
   flySpeed: 50
   flySound: {fileID: 8300000, guid: 5c74f96aa245a4c5d81844bfc7bbad4d, type: 3}

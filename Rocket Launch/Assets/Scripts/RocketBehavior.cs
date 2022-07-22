@@ -8,8 +8,8 @@ public class RocketBehavior : MonoBehaviour
     AudioSource _as;
 
     [SerializeField] Text textFuel;
-    [SerializeField] int fuelTotal = 2000;
-    [SerializeField] int fuelApply = 5;
+    [SerializeField] float fuelTotal = 2000f;
+    [SerializeField] float fuelApply = 5f;
     [SerializeField] float rotationSpeed = 70f;
     [SerializeField] float flySpeed = 50f;
     [SerializeField] AudioClip flySound;
@@ -41,7 +41,7 @@ public class RocketBehavior : MonoBehaviour
 
     void Update()
     {
-        if (state == State.Playing || fuelTotal < 5)
+        if (state == State.Playing || fuelTotal < 0)
         {
             RocketLaunch();
             RocketRotation();
@@ -92,8 +92,8 @@ public class RocketBehavior : MonoBehaviour
     {
         state = State.Dead;
         _as.Stop();
-        deathParticle.Play();
         _as.PlayOneShot(deathSound);
+        deathParticle.Play();
         Invoke("LoadFirstLevel", 2.5f);
     }
 
@@ -101,8 +101,8 @@ public class RocketBehavior : MonoBehaviour
     {
         state = State.LoadNextLevel;
         _as.Stop();
-        finishParticle.Play();
         _as.PlayOneShot(finishSound);
+        finishParticle.Play();
         Invoke("LoadNextLevel", 2.5f);
     }
 
@@ -127,10 +127,10 @@ public class RocketBehavior : MonoBehaviour
     {
         float flySpeedDelta = flySpeed * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && fuelTotal > 0) 
+        if (Input.GetKey(KeyCode.Space) && Mathf.Round(fuelTotal) > 0)
         {
-            fuelTotal -= Mathf.RoundToInt(fuelApply*Time.deltaTime);
-            textFuel.text = fuelTotal.ToString();
+            fuelTotal -= fuelApply * Time.deltaTime;
+            textFuel.text = Mathf.Round(fuelTotal).ToString();
             _rb.AddRelativeForce(Vector3.up * flySpeedDelta);
             if (!_as.isPlaying)
                 _as.PlayOneShot(flySound);
@@ -138,7 +138,7 @@ public class RocketBehavior : MonoBehaviour
         }
         else
         {
-            _as.Pause();
+            _as.Stop();
             flyParticle.Stop();
         }
     }

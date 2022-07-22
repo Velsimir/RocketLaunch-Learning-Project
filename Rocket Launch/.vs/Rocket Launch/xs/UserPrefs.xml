@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{5173D903-5FDF-F1A8-033A-7EFD9E51B17E}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RocketBehavior.cs">
     <Files>
-      <File FileName="Assets/Scripts/RocketBehavior.cs" Line="95" Column="30" />
-      <File FileName="Assets/Scripts/MoveObject.cs" Line="15" Column="18" />
-      <File FileName="Assets/Scripts/MenuControl.cs" Line="11" Column="10" />
+      <File FileName="Assets/Scripts/RocketBehavior.cs" Line="109" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,9 +19,11 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="12139616-027c-476b-90d5-206d9d3ce2af" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ac82ec51-99f8-420f-a146-1377bf5130e6" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/koniashovivan/Documents/GitHub/RocketLaunch-Learning-Project/Rocket Launch/Assets/Scripts/RocketBehavior.cs" relfile="Assets/Scripts/RocketBehavior.cs" line="101" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
